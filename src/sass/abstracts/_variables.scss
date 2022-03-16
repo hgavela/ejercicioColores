@@ -44,6 +44,7 @@ $coloresVerdesDegradados: (
     map-get($coloresVerdesDegradados, degradado2) );
 }
 
+$id: 1;
 @for $i from 1 through 5{
     .circulo#{$i}{
         width: 150px;
@@ -54,24 +55,46 @@ $coloresVerdesDegradados: (
         -ms-border-radius: 50%;
         -o-border-radius: 50%;
         background: linear-gradient(to right, 
-        map-get($coloresVerdesDegradados, degradado#{$i}), 
-        map-get($coloresVerdesDegradados, degradado#{$i+1}) );
+        map-get($coloresVerdesDegradados, degradado#{$id}), 
+        map-get($coloresVerdesDegradados, degradado#{$id + 1}) );
+
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    $id: $id + 2;
+}
+
+//Rectangulo
+
+.rectangulo1{
+    width: 100%;
+    height: 100%;
+    border-radius: 50vh;
+    -webkit-border-radius: 50vh;
+    -moz-border-radius: 50vh;
+    -ms-border-radius: 50vh;
+    -o-border-radius: 50vh;
+    background-color: map-get($coloresVerdesPlanos, superoscuro);
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+
+}
+
+
+$contador: 0;
+@each $color in map-keys($coloresVerdesPlanos){
+    $contador: $contador +1;
+    .rectangulo#{$contador}{
+        width: 100%;
+        height: 100%;
+        border-radius: 50vh;
+        -webkit-border-radius: 50vh;
+        -moz-border-radius: 50vh;
+        -ms-border-radius: 50vh;
+        -o-border-radius: 50vh;
+        background-color: map-get($coloresVerdesPlanos, $color) ;
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    
     }
 }
-
-@each $name , $color in $coloresVerdesPlanos{
-    .rectangulo#{$name}{
-        width: 150px;
-        height: 350px;
-        border-radius: 80px;
-        -webkit-border-radius: 80px;
-        -moz-border-radius: 80px;
-        -ms-border-radius: 80px;
-        -o-border-radius: 80px;
-        background-color: map-get($coloresVerdesPlanos , $name)    ;
-}
-}
-
 
 
     
